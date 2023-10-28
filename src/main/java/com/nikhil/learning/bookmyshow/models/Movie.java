@@ -33,6 +33,6 @@ public class Movie extends BaseModel{
     @Enumerated
     private List<MovieFeature> features = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(mappedBy = "movie")
     private List<Show> shows = new ArrayList<>();
 }

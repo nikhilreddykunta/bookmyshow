@@ -21,6 +21,6 @@ public class City extends BaseModel{
 
     private String name;
 
-    @OneToMany
+    @OneToMany(mappedBy = "city")
     private List<Theatre> theatres = new ArrayList<>();
 }

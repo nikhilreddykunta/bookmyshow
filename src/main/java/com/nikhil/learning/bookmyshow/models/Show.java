@@ -1,8 +1,7 @@
 package com.nikhil.learning.bookmyshow.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import com.nikhil.learning.bookmyshow.enums.Language;
+import jakarta.persistence.*;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -11,20 +10,25 @@ import java.util.List;
 
 @Getter
 @Entity
+@Table(name = "shows")
 public class Show extends BaseModel{
 
     private Date startTime;
 
     @ManyToOne
+    @JoinColumn(name = "movie_id")
     private Movie movie;
 
     private int duration;
-    private String language;
 
-    @OneToMany
+    @Enumerated
+    private Language language;
+
+    @OneToMany(mappedBy = "show")
     private List<ShowSeat> showSeats = new ArrayList<>();
 
     @ManyToOne
+    @JoinColumn(name = "screen_id")
     private Screen screen;
 
 }
